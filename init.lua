@@ -603,6 +603,12 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
+        racket_langserver = {
+          cmd = {
+            'racket',
+            '/home/guzun/.local/share/racket/8.12/pkgs/racket-langserver/main.rkt',
+          },
+        },
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -653,7 +659,10 @@ require('lazy').setup({
       --    :Mason
       --
       -- You can press `g?` for help in this menu.
-      local ensure_installed = vim.tbl_keys(servers or {})
+      local ensure_installed = {}
+      for name, _ in pairs(servers) do
+        if name ~= 'racket_langserver' then table.insert(ensure_installed, name) end
+      end
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
       })
