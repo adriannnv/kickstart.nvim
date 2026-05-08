@@ -5,6 +5,12 @@
 
 ---@module 'lazy'
 ---@type LazySpec
+
+vim.keymap.set('n', '<leader>rh', function()
+  local file = vim.fn.expand '%:p'
+  vim.cmd('split | terminal ghci "' .. file .. '"')
+end, { desc = 'Run current Haskell file in GHCi' })
+
 return {
   {
     'bluz71/vim-moonfly-colors',
