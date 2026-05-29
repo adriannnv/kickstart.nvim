@@ -435,6 +435,8 @@ require('lazy').setup({
           -- This is where a variable was first declared, or where a function is defined, etc.
           -- To jump back, press <C-t>.
           vim.keymap.set('n', 'grd', builtin.lsp_definitions, { buffer = buf, desc = '[G]oto [D]efinition' })
+          -- Allow Ctrl+Left Click to also jump to definition
+          vim.keymap.set('n', '<C-LeftMouse>', builtin.lsp_definitions, { buffer = buf, desc = 'Goto Definition (Mouse)' })
 
           -- Fuzzy find all the symbols in your current document.
           -- Symbols are things like variables, functions, types, etc.
@@ -450,7 +452,7 @@ require('lazy').setup({
           vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { buffer = buf, desc = '[G]oto [T]ype Definition' })
         end,
       })
-
+      vim.keymap.set('n', '<leader>fw', function() require('custom.floating').open() end, { desc = 'Open floating window' })
       -- Override default behavior and theme when searching
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -610,7 +612,7 @@ require('lazy').setup({
             '/home/guzun/.local/share/racket/8.12/pkgs/racket-langserver/main.rkt',
           },
         },
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
