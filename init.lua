@@ -856,6 +856,7 @@ require('lazy').setup({
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
+      require('mini.pairs').setup()
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
@@ -935,6 +936,10 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
+  -- Add diffview for side-by-side git comparisons
+  {
+    'sindrets/diffview.nvim',
+  },
   { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
